@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileDokan</title>
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="header">
+        
+        <%- include('partials/nav')%>
+        <div class="body">
+            <span>Welcome To</span>
+            <h1>MobileDokan</h1>
+            <div class="btn-group">
+                <button><a href="#subscribe-section">Contact Us</a></button>
+                <button><a href="#menu-section">Our Product</a></button>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <div class="divider"></div>
+
+    <div id="menu-section">
+        <marquee behavior="" direction=""><h2>Discover Our <span>Top </span>Product</h2></marquee>
+        <div class="row card-dishes">
+            <% products.forEach(product => { %>
+            <div>
+                <a href="/product/<%= product.id %>">
+                    <img src="/images/userUpload/<%= product.imageName %>" alt="<%= product.name %>">
+                    <div>
+                        <h3><%= product.name %></h3>
+                        <p>Price: <%= product.price %></p>
+                        <p>Stock: <%= product.stock %></p>
+                        <form action="/cart" method="POST">
+                            <input type="hidden" name="id" value="<%= product.id %>">
+                            <input type="hidden" name="name" value="<%= product.name %>">
+                            <input type="hidden" name="price" value="<%= product.price %>">
+                            <input type="hidden" name="imageName" value="<%= product.imageName %>">
+                            <button type="submit" id="add_cart_button">Add to Cart</button>
+                        </form>
+                    </div>
+                </a>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+
+ 
+
+    <div class="divider" id="aq"></div>
+
+
+    <div class="divider"></div>
+
+    <div id="our_product">
+        <h2>Discover Your Pleasure</h2>
+        <div class="mobile-slider-container">
+            <button class="prev-arrow"><i>&lt;</i></button>
+            <div class="mobile-slider">
+                <div class="mobile-slide">
+                    <div class="mobile-image">
+                        <img src="/images/mobile2.jpg" alt="mobile 1">
+                        <h3>Poco X6 Neo 5G</h3>
+                    </div>
+                    <p>POCO PHONE</p>
+                </div>
+                <div class="mobile-slide">
+                    <div class="mobile-image">
+                        <img src="images/NOKIA-3310-Yellow.jpg" alt="mobile 2">
+                        <h3>NOKIA-3310-Yellow</h3>
+                    </div>
+                    <p>NOKIA</p>
+                </div>
+                <div class="mobile-slide">
+                    <div class="mobile-image">
+                        <img src="/images/Cat-S22-Flip-2.jpg" alt="mobile 3">
+                        <h3>Cat-S22-Flip</h3>
+                    </div>
+                    <p>CAT</p>
+                </div>
+                <div class="mobile-slide">
+                    <div class="mobile-image">
+                        <img src="/images/pova-4-g.png" alt="mobile 4">
+                        <h3>Pova-4G</h3>
+                    </div>
+                    <p>POVA</p>
+                </div>
+                <div class="mobile-slide">
+                    <div class="mobile-image">
+                        <img src="/images/vision-3.png" alt="mobile 5">
+                        <h3>Vision-3</h3>
+                    </div>
+                    <p>VISION</p>
+                </div>
+            </div>
+            <button class="next-arrow"><i>&gt</i></button>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <%- include('partials/footer')%>
+
+
+    <div class="message-button" id="message-button">
+        <button class="msgButton" onclick="toggleChatBox()">Message</button>
+    </div>
+    
+    <div class="chat-box-container" id="chat-box-container">
+        <div class="chat-box" id="chat-box">
+            <button onclick="closeChatBox()" class="close-button">&times;</button>
+            <div class="chat-messages" id="chat-messages">
+                <!--  -->
+                <h1>Text To Admin</h1>
+            
+                <div id="messages"></div>
+                <!--  -->
+            </div>
+            <input type="text" id="message" placeholder="Enter Message" />
+            <button id="sendBtn">Send</button>
+        </div>
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const sendBtn = document.getElementById("sendBtn");
+      const messageInput = document.getElementById("message");
+      const allMessages = document.getElementById("messages");
+
+      socket.on("chat message", (message) => { // changed from 'message' to 'chat message'
+        const p = document.createElement("p");
+        p.innerText = message;
+        allMessages.appendChild(p);
+      });
+
+      sendBtn.addEventListener("click", (e) => {
+        const message = messageInput.value;
+        console.log(message);
+        socket.emit("chat message", message); // changed from 'user-message' to 'chat message'
+      });
+    </script>
+
+  <script src="js/scripts.js"></script>
+  
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1714246972738,
+    "name": "Poco X6 Neo 5G",
+    "price": "22500",
+    "stock": 100,
+    "imageName": "1714246972731.jpg"
+  },
+  {
+    "id": 1714247001284,
+    "name": "NOKIA-3310-Yellow",
+    "price": "12500",
+    "stock": 49,
+    "imageName": "1714247001275.jpg"
+  },
+  {
+    "id": 1714247032882,
+    "name": "Cat-S22-Flip",
+    "price": "15999",
+    "stock": 49,
+    "imageName": "1714247032874.jpg"
+  },
+  {
+    "id": 1714328505211,
+    "name": "Vision-3",
+    "price": "17999",
+    "stock": 49,
+    "imageName": "1714328505206.png"
+  },
+  {
+    "id": 1714328581715,
+    "name": "redmi-11-prime-green",
+    "price": "25000",
+    "stock": 99,
+    "imageName": "1714328581708.png"
+  },
+  {
+    "id": 1714328639429,
+    "name": "Xaomi-Y3",
+    "price": "16000",
+    "stock": "50",
+    "imageName": "1714328639423.png"
+  },
+  {
+    "id": 1730266251199,
+    "name": "Infinix",
+    "price": "25000",
+    "stock": "60",
+    "imageName": "1730266251176.jpg"
+  }
+]

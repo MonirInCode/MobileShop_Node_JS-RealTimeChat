@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - MobileDokan</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+  <div class="header">
+    <nav class="sticky-nav">
+      <a id="logo" href="/">&#128241;</a>
+      <div id="nav-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/admin">Admin</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <section id="main_section_admin">
+    <section id="sub_section_admin">
+          <h1>Product Management</h1>
+          <fieldset>
+            <form action="/admin/add" method="POST" enctype="multipart/form-data">
+              <label for="name">Product Name:</label>
+              <input type="text" id="name" name="name" required><br>
+              <label for="price">Price:</label>
+              <input type="number" id="price" name="price" required><br>
+              <label for="stock">Stock:</label>
+              <input type="number" id="stock" name="stock" required><br>
+              <label for="image">Image:</label>
+              <input type="file" id="image" name="image" required>
+              <button type="submit" id="submit">Add Product</button>
+            </form>
+            <legend>Add New Product</legend>
+          </fieldset>
+    
+          <h2>Existing Products</h2>
+          <fieldset>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Image</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% products.forEach(product=> { %>
+                  <tr>
+                    <td>
+                      <%= product.name %>
+                    </td>
+                    <td>
+                      <%= product.price %>
+                    </td>
+                    <td>
+                      <%= product.stock %>
+                    </td>
+                    <td><img src="/images/userUpload/<%= product.imageName %>" alt="<%= product.name %>" width="100"></td>
+                    <td>
+                      <a href="/admin/update/<%= product.id %>" id="update">Update</a>
+                      <a href="/admin/delete/<%= product.id %>" id="delete">Delete</a>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+            </table>
+          </fieldset>
+    </section>
+    <aside id="aside_form">
+      
+    
+            <div class="chat-messages" id="chat-messages">
+                <!--  -->
+                <h1>Text From User</h1>
+
+                
+
+                <div id="messages"></div>
+
+                <!--  -->
+            </div>
+            <input type="text" id="message" placeholder="Enter Message" />
+            <button id="sendBtn">Send</button>
+        
+    
+
+
+
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const sendBtn = document.getElementById("sendBtn");
+      const messageInput = document.getElementById("message");
+      const allMessages = document.getElementById("messages");
+
+      socket.on("chat message", (message) => { // changed from 'message' to 'chat message'
+        const p = document.createElement("p");
+        p.innerText = message;
+        allMessages.appendChild(p);
+      });
+
+      sendBtn.addEventListener("click", (e) => {
+        const message = messageInput.value;
+        console.log(message);
+        socket.emit("chat message", message); // changed from 'user-message' to 'chat message'
+      });
+    </script>   
+  </aside>
+  </section>
+  
+
+  <!-- Chatbox for admin-customer communication -->
+
+
+  <script src="/js/admin.js"></script>
+
+
+
+<div class="footer">
+    <footer>
+        &copy; MobileDokan
+  </footer>
+</div>
+
+</body>
+
+</html>

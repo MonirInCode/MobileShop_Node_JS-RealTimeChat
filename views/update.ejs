@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Product - MobileDokan</title>
+  <link rel="stylesheet" href="/css/update.css">
+</head>
+<body>
+  <div class="header">
+    <nav class="sticky-nav">
+      <a id="ulogo" href="/">&#128241;</a>
+      <div id="nav-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/admin">Admin</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <section id="update_section">
+    <fieldset>
+      <form action="/admin/update/<%= product.id %>" method="POST" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<%= product.name %>" required>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" value="<%= product.price %>" required>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" value="<%= product.stock %>" required>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image">
+        <input type="hidden" name="existingImage" value="<%= product.imageName %>">
+        <img src="/images/userUpload/<%= product.imageName %>" alt="<%= product.name %>" width="100" id="update_img">
+        <button type="submit" id="update_product">Update Product</button>
+      </form>
+      <legend>Update Product</legend>
+    </fieldset>
+  </section>
+</body>
+</html>

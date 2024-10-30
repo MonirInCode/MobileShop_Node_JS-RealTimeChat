@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1714247001284,
+    "name": "NOKIA-3310-Yellow",
+    "price": "12500",
+    "quantity": 1,
+    "totalPrice": "12500",
+    "imageName": "1714247001275.jpg"
+  },
+  {
+    "id": 1714247032882,
+    "name": "Cat-S22-Flip",
+    "price": "15999",
+    "quantity": 1,
+    "totalPrice": "15999",
+    "imageName": "1714247032874.jpg"
+  },
+  {
+    "id": 1714328505211,
+    "name": "Vision-3",
+    "price": "17999",
+    "quantity": 1,
+    "totalPrice": "17999",
+    "imageName": "1714328505206.png"
+  },
+  {
+    "id": 1714328581715,
+    "name": "redmi-11-prime-green",
+    "price": "25000",
+    "quantity": 1,
+    "totalPrice": "25000",
+    "imageName": "1714328581708.png"
+  }
+]

@@ -1,0 +1,22 @@
+img {
+  width: 300px;
+}
+html {
+  background: aliceblue;
+}
+button {
+  padding: 10px;
+  margin-left: 100px;
+  background: #6a5b47;
+  border: none;
+  border-radius: 6px;
+  color: aliceblue;
+  cursor: pointer;
+}
+button:hover{
+  background-color: rgb(62, 116, 62);
+}
+p {
+  font-size: 25px;
+  margin-left: 76px;
+}

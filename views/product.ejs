@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= product.name %> - Mobile Dokan</title>
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+  <div class="header">
+    <nav class="sticky-nav">
+      <a id="logoo" href="/">&#128241;</a>
+      <div id="nav-menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/admin">Admin</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container">
+    <h1><%= product.name %></h1>
+    <img src="/images/userUpload/<%= product.imageName %>" alt="<%= product.name %>">
+    <p>Price: <%= product.price %></p>
+    <form action="/cart" method="POST">
+      <input type="hidden" name="id" value="<%= product.id %>">
+      <input type="hidden" name="name" value="<%= product.name %>">
+      <input type="hidden" name="price" value="<%= product.price %>">
+      <button type="submit">Add to Cart</button>
+    </form>
+  </div>
+</body>
+</html>
